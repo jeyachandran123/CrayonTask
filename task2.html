@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+    <style>
+        .content {
+            display: flex;
+            flex-direction: column;
+            padding: 40px 40px 40px 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content container">
+        <h2 class="text-center">User Registration Form</h2>
+        <form class="row g-3 m-4 needs-validation" id="profileForm" novalidate>
+            <div class="col-md-12">
+                <label for="validName" class="form-label">Name</label>
+                <input type="text" class="form-control" id="validName" required>
+            </div>
+            <div id="validname"></div>
+
+            <div class="col-md-12">
+                <label for="ValidEmail" class="form-label">Email</label>
+                <div id="validname">
+                    <input type="text" class="form-control" id="ValidEmail" required>
+                </div>
+                <div id="validateemail"></div>
+            </div>
+
+            <div class="col-md-12">
+                <label class="form-label">Mobile Number</label>
+                <input type="text" class="form-control" id="validationMobileNumber" required>
+                <div id="invalidMobilenumber">
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="male" class="form-label">Gender</label>
+
+                    <div class="radio">
+                        <label>
+                            <input type="radio" id="male" value="Male" name="Gender" required>
+                            Male
+                        </label>
+                    </div>
+
+                    <div class="radio">
+                        <label>
+                            <input type="radio" id="female" value="Female" name="Gender" required>
+                            Female
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div id="validategender"></div>
+
+            <div class="col-md-12">
+                <label for="countryInput" class="form-label">Country</label>
+                <select class="form-select" id="countryInput" required>
+                    <option value="select">Choose...</option>
+                    <option value="INDIA">INDIA</option>
+                    <option value="CHINA">CHINA</option>
+                    <option value="JAPAN">JAPAN</option>
+                    <option value="USA">USA</option>
+                    <option value="UK">UK</option>
+                </select>
+                <div id="validcountr">
+
+                </div>
+            </div>
+    </div>
+    <div class="col-12 align text-center">
+        <button id="submitbtn" class="btn btn-primary" type="submit">Submit form</button>
+    </div>
+    </form>
+    </div>
+
+</body>
+<script>
+
+    $(document).ready(function () {
+        $("#submitbtn").click(function (e) {
+            e.preventDefault();
+            Valuessend();
+        });
+    });
+
+    function Valuessend() {
+        // Validation For Name
+        var validNameval;
+        validNameval = document.getElementById('validName').value;
+        if (validName.value != "") {
+            document.getElementById('validName').style.borderColor = "green";
+            document.getElementById('validname').innerText = "";
+            var Name = document.getElementById('validName').value;
+        }
+        else {
+            document.getElementById('validname').innerText = " * Please Enter The Name ";
+            document.getElementById('validname').style.color = "red";
+            document.getElementById('validName').style.borderColor = "red";
+        }
+        // Validation For Mobile
+        var Mobile;
+        Mobile = document.getElementById('validationMobileNumber').value;
+        if (Mobile.length === 10) {
+            var Mobilenumber = document.getElementById('validationMobileNumber').value;
+            document.getElementById('validationMobileNumber').style.borderColor = "green";
+            document.getElementById('invalidMobilenumber').innerText = "";
+
+        }
+        else {
+
+            document.getElementById('invalidMobilenumber').innerText = " * Please Enter Valid Mobile Number";
+            document.getElementById('invalidMobilenumber').style.color = "red";
+            document.getElementById('validationMobileNumber').style.borderColor = "red";
+        }
+
+        // Validation For Mail
+        var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if (ValidEmail.value.match(mailformat)) {
+            var Email = document.getElementById('ValidEmail').value;
+            document.getElementById('ValidEmail').style.borderColor = "green";
+            document.getElementById('validateemail').innerText = "";
+
+        } else {
+
+            document.getElementById('validateemail').innerText = " * Please Enter Valid Email ID";
+            document.getElementById('validateemail').style.color = "red";
+            document.getElementById('ValidEmail').style.borderColor = "red";
+        }
+
+        // Validation For Gender
+        var Gender;
+
+        if (document.getElementById('male').checked === true) {
+            Gender = document.getElementById('male').value;
+            document.getElementById('validategender').innerText = "";
+        } else if (document.getElementById('female').checked === true) {
+            Gender = document.getElementById('female').value;
+            document.getElementById('validategender').innerText = null;
+        }
+        else {
+
+            document.getElementById('validategender').innerText = " * Please Select The Gender";
+            document.getElementById('validategender').style.color = "red";
+        }
+        // Validation For Country
+        var validcountry;
+        validcountry = document.getElementById('countryInput').value;
+        if (validcountry != "select") {
+            document.getElementById('countryInput').style.borderColor = "green";
+            document.getElementById('validcountr').innerText = null;
+            var Country = document.getElementById("countryInput").value;
+        }
+        else {
+            document.getElementById('validcountr').innerText = " * Please Select The Country";
+            document.getElementById('validcountr').style.color = "red";
+            document.getElementById('countryInput').style.borderColor = "red";
+        }
+        // Final output Save As Local Storage in JSON format
+        if (validNameval?.value != "" && ValidEmail?.value != "" && Mobile?.value != "" && Gender != "" && validcountry?.value != "") {
+            var finalout = {
+                "name": Name,
+                "Email": Email,
+                "MobileNo": Mobilenumber,
+                "Gender": Gender,
+                "Country": Country
+            }
+       
+            localStorage.setItem(
+                "value", JSON.stringify(finalout)
+            )
+            alert("Saved...!")
+            document.getElementById("profileForm").reset()
+        }
+        return false
+    }
+
+</script>
+
+</html>

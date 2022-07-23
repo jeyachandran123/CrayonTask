@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+}   
+.contentdiv{
+    margin-top: 5%;
+    background-color: #EEEEEE;
+    border-radius:5px ;
+    padding: 40px 40px 40px 40px;    
+}
+.contentdiv.content{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+.bottomdiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.bottom{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+.copywrite{
+    height: 100px;
+}
