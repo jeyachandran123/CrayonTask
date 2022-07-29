@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+    crossorigin="anonymous"></script>  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+</head>
+<style>
+    .table{    
+        
+        justify-content: space-around;
+        margin-top: 3%;
+
+
+    }
+</style>
+<body onload="buildHtmlTable()">  
+    <div class="container">     
+        <table id="DataTable" class="table justfy-content" border="1" width="80%">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Mobile Number</th>
+                <th>Language</th>
+                <th>Gender</th>
+                <th>Country</th>
+            </tr>
+            <tbody>
+                <tr>
+                    <td id="name"></td>
+                    <td id="email"></td>
+                    <td id="mblnumber"></td>
+                    <td id="language"></td>
+                    <td id="gender"></td>
+                    <td id="country"></td>
+                </tr>
+            </tbody>
+        </table>  
+    </div>  
+    <div class="col-12 align text-center">
+    <button id="addbtn" class="btn btn-primary" onclick="Addbtn()" type="submit">ADD</button> 
+</div>
+</body>
+<script>   
+
+    function buildHtmlTable() {
+        var Name = localStorage.getItem("Name");
+        var Email = localStorage.getItem("Email");
+        var MobileNo = localStorage.getItem("MobileNo");
+        var Language = localStorage.getItem("Language");
+        var Gender = localStorage.getItem("Gender");
+        var Country = localStorage.getItem("Country");
+        document.getElementById('name').innerHTML =Name;
+        document.getElementById('email').innerHTML=Email;
+        document.getElementById('mblnumber').innerHTML=MobileNo;
+        document.getElementById('language').innerHTML=Language;
+        document.getElementById('gender').innerHTML=Gender;
+        document.getElementById('country').innerHTML=Country;
+        var Allname = Name.split(',');
+        console.log(Allname)
+        var AllEmail = Email.split(',');
+        console.log(AllEmail)
+        var AllMobileNo = MobileNo.split(',');
+        console.log(AllMobileNo)
+        var AllLanguage = Language.split(',');
+        console.log(AllLanguage)
+        var AllGender = Gender.split(',');
+        console.log(AllGender)
+        var AllCountry = Country.split(',');
+        console.log(AllCountry)
+//         var row = document.getElementById('DataTable').insertrow(0);
+//   var x = row.insertCell(0);
+//   x.innerHTML = Allname;
+
+
+    console.log(Name,Email,MobileNo,Language,Gender,Country);   
+
+}
+function Addbtn()
+{
+    window.open("task2.html")
+}
+
+
+
+
+</script>
+
+</html>
