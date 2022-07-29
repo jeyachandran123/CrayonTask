@@ -121,6 +121,7 @@
     </div>
     <div class="col-12 align text-center">
         <button id="submitbtn" class="btn btn-primary" type="submit">Submit form</button>
+        <!-- <a id="" class="btn btn-primary"  href=""></a> -->
     </div>
     </form>
     </div>
@@ -142,7 +143,10 @@
         if (validName.value != "") {
             document.getElementById('validName').style.borderColor = "green";
             document.getElementById('validname').innerText = "";
-            var Name = document.getElementById('validName').value;
+            var OldName = localStorage.getItem("Name");
+            //var OldName ="";
+            var Name = document.getElementById('validName').value+`<br>`+OldName;
+
         }
         else {
             document.getElementById('validname').innerText = " * Please Enter The Name ";
@@ -153,7 +157,10 @@
         var Mobile;
         Mobile = document.getElementById('validationMobileNumber').value;
         if (Mobile.length === 10) {
-            var Mobilenumber = document.getElementById('validationMobileNumber').value;
+
+            var OLDMobileNo = localStorage.getItem("MobileNo");
+            //var OLDMobileNo ="";
+            var Mobilenumber = document.getElementById('validationMobileNumber').value+`<br>`+OLDMobileNo;
             document.getElementById('validationMobileNumber').style.borderColor = "green";
             document.getElementById('invalidMobilenumber').innerText = "";
 
@@ -168,7 +175,9 @@
         // Validation For Mail
         var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         if (ValidEmail.value.match(mailformat)) {
-            var Email = document.getElementById('ValidEmail').value;
+           var OLDEmail = localStorage.getItem("Email");
+           //var OLDEmail ="";
+            var Email = document.getElementById('ValidEmail').value+`<br>`+OLDEmail;
             document.getElementById('ValidEmail').style.borderColor = "green";
             document.getElementById('validateemail').innerText = "";
 
@@ -181,38 +190,39 @@
 		
 		        // Validation For Language
         var Language;
-	
+        var oldLanguage = localStorage.getItem("Language");
+        //var oldLanguage ="";
         if (document.getElementById('Tamil').checked === true && document.getElementById('English').checked === false && document.getElementById('Hindi').checked === false) {
-            Language = document.getElementById('Tamil').value;
+            Language = document.getElementById('Tamil').value+`<br>`+oldLanguage;
             document.getElementById('validatelanguge').innerText = "";
         } else if (document.getElementById('English').checked === true && document.getElementById('Tamil').checked === false && document.getElementById('Hindi').checked === false ) {
-            Language = document.getElementById('English').value; 
+            Language = document.getElementById('English').value+`<br>`+oldLanguage; 
             document.getElementById('validatelanguge').innerText = null;
 			
         }    else if (document.getElementById('Hindi').checked === true && document.getElementById('English').checked === false && document.getElementById('Tamil').checked === false) {
-            Language =  document.getElementById('Hindi').value ;
+            Language =  document.getElementById('Hindi').value+`<br>`+oldLanguage ;
             document.getElementById('validatelanguge').innerText = null;
         }
 		         else if (document.getElementById('Tamil').checked === true && document.getElementById('English').checked === true  && document.getElementById('Hindi').checked === false ) {
-            Language =document.getElementById('Tamil').value +","+ document.getElementById('English').value; 
+            Language =document.getElementById('Tamil').value +"/"+ document.getElementById('English').value+`<br>`+oldLanguage; 
             document.getElementById('validatelanguge').innerText = null;
 			
         }    else if (document.getElementById('Tamil').checked === true && document.getElementById('Hindi').checked === true && document.getElementById('English').checked === false) {
-            Language = document.getElementById('Tamil').value +","+  document.getElementById('Hindi').value ;
+            Language = document.getElementById('Tamil').value +"/"+  document.getElementById('Hindi').value +`<br>`+oldLanguage;
             document.getElementById('validatelanguge').innerText = null;
         }         else if (document.getElementById('English').checked === true && document.getElementById('Hindi').checked === true && document.getElementById('Tamil').checked === false) {
-            Language = document.getElementById('English').value +","+  document.getElementById('Hindi').value ; 
+            Language = document.getElementById('English').value +"/"+  document.getElementById('Hindi').value+`<br>`+oldLanguage; 
             document.getElementById('validatelanguge').innerText = null;
 			
         }    else if (document.getElementById('Hindi').checked === true && document.getElementById('Tamil').checked === true && document.getElementById('English').checked === true ) {
-            Language = document.getElementById('Tamil').value +","+  document.getElementById('English').value +","+ document.getElementById('Hindi').value ;
+            Language = document.getElementById('Tamil').value +"/"+  document.getElementById('English').value +"/"+ document.getElementById('Hindi').value+`<br>`+oldLanguage ;
             document.getElementById('validatelanguge').innerText = null;
         }        
 		
         else 
 		{ 
 		if (document.getElementById('Tamil').checked === false && document.getElementById('English').checked === false && document.getElementById('English').checked === false  ) {
-		document.getElementById('validatelanguge').innerText = " * Please Select The Language";
+		    document.getElementById('validatelanguge').innerText = " * Please Select The Language";
             document.getElementById('validatelanguge').style.color = "red";
 		}
 
@@ -222,12 +232,13 @@
 
         // Validation For Gender
         var Gender;
-
-        if (document.getElementById('male').checked === true) {
-            Gender = document.getElementById('male').value;
+        var oldGender = localStorage.getItem("Gender");
+        //var oldGender ="";
+        if (document.getElementById('male').checked === true) {           
+            Gender = document.getElementById('male').value+`<br>`+oldGender;
             document.getElementById('validategender').innerText = "";
         } else if (document.getElementById('female').checked === true) {
-            Gender = document.getElementById('female').value;
+            Gender = document.getElementById('female').value+`<br>`+oldGender;
             document.getElementById('validategender').innerText = null;
         }
         else {
@@ -237,11 +248,14 @@
         }
         // Validation For Country
         var validcountry;
+       
         validcountry = document.getElementById('countryInput').value;
         if (validcountry != "select") {
+             var oldCountry = localStorage.getItem("Country");
+          //var oldCountry ="";
             document.getElementById('countryInput').style.borderColor = "green";
             document.getElementById('validcountr').innerText = null;
-            var Country = document.getElementById("countryInput").value;
+            var Country = document.getElementById("countryInput").value+`<br>`+oldCountry;
         }
         else {
             document.getElementById('validcountr').innerText = " * Please Select The Country";
@@ -249,21 +263,18 @@
             document.getElementById('countryInput').style.borderColor = "red";
         }
         // Final output Save As Local Storage in JSON format
-        if (validNameval != "" && ValidEmail.value.match(mailformat) && Mobile.length === 10 && Gender != "" && validcountry != "" && Language != "") {
-            var finalout = {
-                "name": Name,
-                "Email": Email,
-                "MobileNo": Mobilenumber,
-                "Gender": Gender,
-				"Language":Language,
-                "Country": Country
-            }
-       
-            localStorage.setItem(
-                "value", JSON.stringify(finalout)
-            )
+        if (validNameval != "" && ValidEmail.value.match(mailformat) && Mobile.length === 10 && Language.value  != "" && Gender != "" && validcountry != "") {
+ 
+
+            localStorage.setItem("Name", Name);
+            localStorage.setItem("Email", Email);
+            localStorage.setItem("MobileNo", Mobilenumber);
+            localStorage.setItem("Gender", Gender);
+            localStorage.setItem("Language", Language);
+            localStorage.setItem("Country", Country);
             alert("Saved...!")
             document.getElementById("profileForm").reset()
+            window.open("table.html")
         }
         return false
     }
